@@ -585,14 +585,24 @@
 				</div>
 			@endif
 
-			<div class="flex-box">
-				<p class="width-50 text-left">
-					<strong>{!! $receipt_details->total_label !!}</strong>
-				</p>
-				<p class="width-50 text-right">
-					<strong>{{$receipt_details->total}}</strong>
-				</p>
-			</div>
+                        <div class="flex-box">
+                                <p class="width-50 text-left">
+                                        <strong>{!! $receipt_details->total_label !!}</strong>
+                                </p>
+                                <p class="width-50 text-right">
+                                        <strong>{{$receipt_details->total}}</strong>
+                                </p>
+                        </div>
+                        @if(!empty($receipt_details->change_return))
+                        <div class="flex-box">
+                                <p class="width-50 text-left">
+                                        {{ $receipt_details->change_return_label }}
+                                </p>
+                                <p class="width-50 text-right">
+                                        {{ $receipt_details->change_return }}
+                                </p>
+                        </div>
+                        @endif
 			@if(!empty($receipt_details->total_in_words))
 				<p colspan="2" class="text-right mb-0">
 					<small>
