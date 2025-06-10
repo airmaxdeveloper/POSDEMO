@@ -253,15 +253,22 @@
 <div class="row invoice-info color-555" style="page-break-inside: avoid !important">
 	<div class="col-md-6 invoice-col width-50">
 		<table class="table table-condensed">
-			@if(!empty($receipt_details->payments))
-				@foreach($receipt_details->payments as $payment)
-					<tr>
-						<td>{{$payment['method']}}</td>
-						<td>{{$payment['amount']}}</td>
-						<td>{{$payment['date']}}</td>
-					</tr>
-				@endforeach
-			@endif
+                        @if(!empty($receipt_details->payments))
+                                @foreach($receipt_details->payments as $payment)
+                                        <tr>
+                                                <td>{{$payment['method']}}</td>
+                                                <td>{{$payment['amount']}}</td>
+                                                <td>{{$payment['date']}}</td>
+                                        </tr>
+                                @endforeach
+                        @endif
+
+                        @if(!empty($receipt_details->change_return))
+                                <tr>
+                                        <th style="width:70%">{{ $receipt_details->change_return_label }}</th>
+                                        <td class="text-right">{{ $receipt_details->change_return }}</td>
+                                </tr>
+                        @endif
 		</table>
 		<b class="pull-left">Authorized Signatory</b>
 	</div>

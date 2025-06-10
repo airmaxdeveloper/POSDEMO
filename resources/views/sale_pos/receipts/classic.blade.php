@@ -405,14 +405,21 @@
 		<table class="table table-slim">
 
 			@if(!empty($receipt_details->payments))
-				@foreach($receipt_details->payments as $payment)
-					<tr>
-						<td>{{$payment['method']}}</td>
-						<td class="text-right" >{{$payment['amount']}}</td>
-						<td class="text-right">{{$payment['date']}}</td>
-					</tr>
-				@endforeach
-			@endif
+                                @foreach($receipt_details->payments as $payment)
+                                        <tr>
+                                                <td>{{$payment['method']}}</td>
+                                                <td class="text-right" >{{$payment['amount']}}</td>
+                                                <td class="text-right">{{$payment['date']}}</td>
+                                        </tr>
+                                @endforeach
+                        @endif
+
+                        @if(!empty($receipt_details->change_return))
+                                <tr>
+                                        <th style="width:70%">{{ $receipt_details->change_return_label }}</th>
+                                        <td class="text-right">{{ $receipt_details->change_return }}</td>
+                                </tr>
+                        @endif
 
 			<!-- Total Paid-->
 			@if(!empty($receipt_details->total_paid))

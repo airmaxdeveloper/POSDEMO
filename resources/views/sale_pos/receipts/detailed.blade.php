@@ -635,6 +635,13 @@
                                     </tr>
                                 @endforeach
                             @endif
+
+                            @if(!empty($receipt_details->change_return))
+                                    <tr>
+                                        <th style="width:70%">{{ $receipt_details->change_return_label }}</th>
+                                        <td class="text-right">{{ $receipt_details->change_return }}</td>
+                                    </tr>
+                            @endif
                         </table>
 
                         <b class="pull-left">@lang('lang_v1.authorized_signatory')</b>

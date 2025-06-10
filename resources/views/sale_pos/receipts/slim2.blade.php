@@ -600,14 +600,21 @@
 					</small>
 				</p>
 			@endif
-			@if(!empty($receipt_details->payments))
-				@foreach($receipt_details->payments as $payment)
-					<div class="flex-box">
-						<p class="width-50 text-left">{{$payment['method']}} ({{$payment['date']}}) </p>
-						<p class="width-50 text-right">{{$payment['amount']}}</p>
-					</div>
-				@endforeach
-			@endif
+                        @if(!empty($receipt_details->payments))
+                                @foreach($receipt_details->payments as $payment)
+                                        <div class="flex-box">
+                                                <p class="width-50 text-left">{{$payment['method']}} ({{$payment['date']}}) </p>
+                                                <p class="width-50 text-right">{{$payment['amount']}}</p>
+                                        </div>
+                                @endforeach
+                        @endif
+
+                        @if(!empty($receipt_details->change_return))
+                                <div class="flex-box">
+                                        <p class="width-50 text-left">{{ $receipt_details->change_return_label }}</p>
+                                        <p class="width-50 text-right">{{ $receipt_details->change_return }}</p>
+                                </div>
+                        @endif
             <!-- Total Paid-->
 				@if(!empty($receipt_details->total_paid))
 					<div class="flex-box">
