@@ -1498,18 +1498,18 @@ class TransactionUtil extends Util
             //Get payment details
             $output['payments'] = [];
             $change_return_amount = 0;
-            if ($il->show_payments == 1) {
-                $payments = $transaction->payment_lines->toArray();
-                $payment_types = $this->payment_types($transaction->location_id, true);
-                if (! empty($payments)) {
-                    foreach ($payments as $value) {
-                        $method = ! empty($payment_types[$value['method']]) ? $payment_types[$value['method']] : '';
+            $payments = $transaction->payment_lines->toArray();
+            $payment_types = $this->payment_types($transaction->location_id, true);
+            if (! empty($payments)) {
+                foreach ($payments as $value) {
+                    $method = ! empty($payment_types[$value['method']]) ? $payment_types[$value['method']] : '';
 
-                        if (! empty($value['is_return']) && $value['is_return'] == 1) {
-                            $change_return_amount += $value['amount'];
-                            continue;
-                        }
+                    if (! empty($value['is_return']) && $value['is_return'] == 1) {
+                        $change_return_amount += $value['amount'];
+                        continue;
+                    }
 
+                    if ($il->show_payments == 1) {
                         if ($value['method'] == 'cash') {
                             $output['payments'][] =
                                 ['method' => $method,
