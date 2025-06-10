@@ -592,18 +592,28 @@
 					@endif
 
 					<!-- Total -->
-					<tr>
-						<th>
-							{!! $receipt_details->total_label !!}
-						</th>
-						<td class="text-right">
-							{{$receipt_details->total}}
-							@if(!empty($receipt_details->total_in_words))
-								<br>
-								<small>({{$receipt_details->total_in_words}})</small>
-							@endif
-						</td>
-					</tr>
+                                        <tr>
+                                                <th>
+                                                        {!! $receipt_details->total_label !!}
+                                                </th>
+                                                <td class="text-right">
+                                                        {{$receipt_details->total}}
+                                                        @if(!empty($receipt_details->total_in_words))
+                                                                <br>
+                                                                <small>({{$receipt_details->total_in_words}})</small>
+                                                        @endif
+                                                </td>
+                                        </tr>
+                                        @if(!empty($receipt_details->change_return))
+                                        <tr>
+                                                <th style="width:70%">
+                                                        {{ $receipt_details->change_return_label }}
+                                                </th>
+                                                <td class="text-right">
+                                                        {{ $receipt_details->change_return }}
+                                                </td>
+                                        </tr>
+                                        @endif
 				</tbody>
         	</table>
         </div>

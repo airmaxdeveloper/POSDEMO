@@ -1497,20 +1497,25 @@ class TransactionUtil extends Util
 
             //Get payment details
             $output['payments'] = [];
+            $change_return_amount = 0;
             if ($il->show_payments == 1) {
                 $payments = $transaction->payment_lines->toArray();
                 $payment_types = $this->payment_types($transaction->location_id, true);
                 if (! empty($payments)) {
                     foreach ($payments as $value) {
                         $method = ! empty($payment_types[$value['method']]) ? $payment_types[$value['method']] : '';
+
+                        if (! empty($value['is_return']) && $value['is_return'] == 1) {
+                            $change_return_amount += $value['amount'];
+                            continue;
+                        }
+
                         if ($value['method'] == 'cash') {
                             $output['payments'][] =
-                                ['method' => $method.($value['is_return'] == 1 ? ' ('.$il->change_return_label.')(-)' : ''),
+                                ['method' => $method,
                                     'amount' => $this->num_f($value['amount'], $show_currency, $business_details),
                                     'date' => $this->format_date($value['paid_on'], false, $business_details),
                                 ];
-                            if ($value['is_return'] == 1) {
-                            }
                         } elseif ($value['method'] == 'card') {
                             $output['payments'][] =
                                 ['method' => $method.(! empty($value['card_transaction_number']) ? (', Transaction Number:'.$value['card_transaction_number']) : ''),
@@ -1554,6 +1559,11 @@ class TransactionUtil extends Util
                         }
                     }
                 }
+            }
+
+            if ($change_return_amount > 0) {
+                $output['change_return_label'] = $il->change_return_label;
+                $output['change_return'] = $this->num_f($change_return_amount, $show_currency, $business_details);
             }
         }
 
