@@ -406,7 +406,7 @@
                 }, 400); // 400ms debounce time
             }
             // Prevent duplicate updates when localStorage changes rapidly
-            window.onstorage = debounceStorageUpdate;
+            window.addEventListener('storage', debounceStorageUpdate);
         });
     </script>
 @endsection

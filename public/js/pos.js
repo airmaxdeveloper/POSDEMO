@@ -2423,6 +2423,7 @@ function reset_pos_form(){
 
     //clear stored form data for display screen
     localStorage.removeItem('pos_form_data_array');
+    window.dispatchEvent(new Event('storage'));
 
     $(document).trigger('sell_form_reset');
 }
