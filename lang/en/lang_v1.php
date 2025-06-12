@@ -1572,5 +1572,6 @@ return [
 	'display_screen' => 'Display Screen',
     'customer_display_screen' => 'Customer Display Screen',
     'display_screen_heading' => 'Display screen heading',
+    'customer_display_instraction' => 'For the customer display to work, open it in the same browser as the POS screen in a new tab and mirror that tab to the customer-facing monitor.',
     'enable_customer_display_screen' => 'Enable Customer display screen',
 ];
