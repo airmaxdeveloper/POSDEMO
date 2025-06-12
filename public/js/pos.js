@@ -2421,6 +2421,9 @@ function reset_pos_form(){
     $('.contact_due_text').find('span').text('');
     $('.contact_due_text').addClass('hide');
 
+    //clear stored form data for display screen
+    localStorage.removeItem('pos_form_data_array');
+
     $(document).trigger('sell_form_reset');
 }
 

@@ -243,7 +243,11 @@
 
                 // Check if stored data exists
                 if (!storedArrayData) {
-                    // console.warn("No stored form data found.");
+                    //Clear table and summary fields if no data present
+                    $("#pos_table tbody").empty();
+                    $(".customer_details").html("");
+                    $(".total_quantity, .price_total, #total_discount, #order_tax, #shipping_charges_amount, #total_payable, .total_paying, .change_return_span, .balance_due").text(0);
+                    isLoadingTableData = false;
                     return;
                 }
 
