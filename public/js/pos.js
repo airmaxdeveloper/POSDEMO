@@ -18,6 +18,7 @@ $(document).ready(function() {
     } else {
         pos_form_obj = $('form#add_pos_sell_form');
     }
+    save_pos_form_data();
     if ($('form#edit_pos_sell_form').length > 0 || $('form#add_pos_sell_form').length > 0) {
         initialize_printer();
     }
@@ -2149,6 +2150,7 @@ function pos_total_row() {
     ) {
         update_serial_no();
     }
+    save_pos_form_data();
 }
 
 function get_subtotal() {
@@ -2312,6 +2314,7 @@ function calculate_balance_due() {
 
     __highlight(bal_due * -1, $('span.balance_due'));
     __highlight(change_return * -1, $('span.change_return_span'));
+    save_pos_form_data();
 }
 
 function isValidPosForm() {
@@ -3532,4 +3535,13 @@ function update_serial_no(){
             $(this).find('td:first').text(index + 1);
         }
     });
+}
+
+// Serialize and store the POS form data in localStorage
+function save_pos_form_data() {
+    var form = $('#add_pos_sell_form');
+    if (form.length > 0) {
+        var data = form.serializeArray();
+        localStorage.setItem('pos_form_data_array', JSON.stringify(data));
+    }
 }
