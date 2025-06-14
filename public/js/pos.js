@@ -6,8 +6,15 @@ $(document).ready(function() {
     $('form').on('keyup keypress', function(e) {
         var keyCode = e.keyCode || e.which;
         if (keyCode === 13 && e.target.tagName != 'TEXTAREA') {
-            e.preventDefault();
-            return false;
+            if ($('#modal_payment').is(':visible')) {
+                e.preventDefault();
+                if (e.type === 'keypress') {
+                    $('#pos-save').trigger('click');
+                }
+            } else {
+                e.preventDefault();
+                return false;
+            }
         }
     });
 
