@@ -3,11 +3,27 @@ var global_p_category_id = null;
 $(document).ready(function() {
     customer_set = false;
     //Prevent enter key function except texarea
+    // Trigger finalize payment when pressing Enter inside the payment modal
     $('form').on('keyup keypress', function(e) {
         var keyCode = e.keyCode || e.which;
         if (keyCode === 13 && e.target.tagName != 'TEXTAREA') {
+            if ($('#modal_payment').is(':visible')) {
+                e.preventDefault();
+                if (e.type === 'keypress') {
+                    $('#pos-save').trigger('click');
+                }
+            } else {
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
+
+    // Fallback keydown handler for Enter
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Enter' && $('#modal_payment').is(':visible') && e.target.tagName !== 'TEXTAREA') {
             e.preventDefault();
-            return false;
+            $('#pos-save').trigger('click');
         }
     });
 
