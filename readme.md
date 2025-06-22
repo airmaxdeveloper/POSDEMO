@@ -13,3 +13,7 @@ If you discover a security vulnerability within ultimate POS, please send an e-m
 ## License
 
 The Ultimate POS software is licensed under the [Codecanyon license](https://codecanyon.net/licenses/standard).
+
+## Running as a Service
+
+See [docs/laravel_service_setup.md](docs/laravel_service_setup.md) for steps to build assets, clear caches, and configure a systemd service with Nginx and SSL.
