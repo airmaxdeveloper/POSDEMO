@@ -27,8 +27,9 @@
             }
         }
     @endphp
-    <div class="row">
-        <div class="col-md-4">
+    <div class="container mx-auto py-10">
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
         @if (config('app.env') == 'demo')
         
                 @component('components.widget', [
@@ -105,12 +106,12 @@
         
     @endif
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mx-auto">
             <div
-                class="tw-p-5 md:tw-p-6 tw-mb-4 tw-rounded-2xl tw-transition-all tw-duration-200 tw-bg-white tw-shadow-sm tw-ring-1 tw-ring-gray-200">
+                class="tw-p-6 tw-space-y-4 tw-rounded-2xl tw-bg-white tw-shadow-md tw-border tw-border-gray-200 tw-transition-all tw-duration-200">
                 <div class="tw-flex tw-flex-col tw-gap-4 tw-dw-rounded-box tw-dw-p-6 tw-dw-max-w-md">
                     <div class="tw-flex tw-items-center tw-flex-col">
-                        <h1 class="tw-text-lg md:tw-text-xl tw-font-semibold tw-text-[#1e1e1e]">
+                        <h1 class="tw-text-xl md:tw-text-2xl tw-font-bold tw-text-[#1e1e1e]">
                             @lang('lang_v1.welcome_back')
                         </h1>
                         <h2 class="tw-text-sm tw-font-medium tw-text-gray-500">
@@ -215,7 +216,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4"></div>
+    </div>
     </div>
 
 @stop
