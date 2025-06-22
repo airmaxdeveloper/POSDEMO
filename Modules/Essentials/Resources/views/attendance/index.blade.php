@@ -24,11 +24,11 @@
         </div>     
     @endif
     @if($is_employee_allowed)
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button 
-                    type="button" 
-                    class="btn btn-app bg-blue clock_in_btn
+        <div class="row mb-4">
+            <div class="col-md-12 text-center space-x-2">
+                <button
+                    type="button"
+                    class="tw-dw-btn tw-dw-btn-primary clock_in_btn mx-1
                         @if(!empty($clock_in))
                             hide
                         @endif
@@ -37,14 +37,13 @@
                     >
                     <i class="fas fa-arrow-circle-down"></i> @lang('essentials::lang.clock_in')
                 </button>
-            &nbsp;&nbsp;&nbsp;
-                <button 
-                    type="button" 
-                    class="btn btn-app bg-yellow clock_out_btn
+                <button
+                    type="button"
+                    class="tw-dw-btn tw-dw-btn-warning clock_out_btn mx-1
                         @if(empty($clock_in))
                             hide
                         @endif
-                    "  
+                    "
                     data-type="clock_out"
                     >
                     <i class="fas fa-hourglass-half fa-spin"></i> @lang('essentials::lang.clock_out')
