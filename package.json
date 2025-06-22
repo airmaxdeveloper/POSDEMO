@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development npm run mix",
+    "watch": "npm run development -- --watch",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production npm run mix",
+    "mix": "webpack --progress --hide-modules --config=webpack.mix.js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.2.0",
+    "vue": "^2.6.14"
+  }
+}
